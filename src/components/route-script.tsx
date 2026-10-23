@@ -3,7 +3,7 @@
 //   is how far along the desktop road it sits; on the vertical road it's measured);
 // - where scroll-driven animations are missing, also sets --p, which draws the
 //   progress line. Same mapping as the CSS: its head sits at 70% of the viewport.
-// Reduced motion: nothing runs, so the line is complete and every stop shown.
+// Reduced motion: nothing runs, so there's no progress line and every stop shows.
 const script = `(() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const sda = CSS.supports("animation-timeline: view()");
