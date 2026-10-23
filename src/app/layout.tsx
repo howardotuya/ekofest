@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Onest, Unbounded } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
+import { DetailsScript } from "@/components/details-script";
 import { RevealScript } from "@/components/reveal-script";
 import { RouteScript } from "@/components/route-script";
 import "./globals.css";
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <head>
         <RevealScript />
         <RouteScript />
+        <DetailsScript />
       </head>
       <body>{children}</body>
     </html>

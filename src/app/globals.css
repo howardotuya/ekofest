@@ -312,3 +312,37 @@
     scale: 0.6;
   }
 }
+
+/*
+ * FAQ rows. Where ::details-content is supported the answer slides open on
+ * mobile; on desktop it sits beside the question, so it only fades in.
+ */
+@utility faq-item {
+  interpolate-size: allow-keywords;
+
+  &::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 450ms var(--ease-out-expo),
+      content-visibility 450ms allow-discrete;
+  }
+
+  &[open]::details-content {
+    height: auto;
+  }
+
+  @variant lg {
+    &::details-content {
+      height: auto;
+      overflow: visible;
+      transition: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::details-content {
+      transition: none;
+    }
+  }
+}
