@@ -13,4 +13,254 @@
   --color-violet: #8b6cff;
   --color-pink: #ff5fa2;
   --color-orange: #ff6b2c;
+  /* Raw colours in the frames: mobile panels, and the road's edge and lane marks. */
+  --color-panel: #151517;
+  --color-tarmac: #2c2c30;
+  --color-lane: #cfc5ab;
+  /*
+   * Fill for violet surfaces that carry small white text. White on the Figma
+   * violet is 3.7:1; on this it's 4.7:1 (WCAG AA). Howard approved.
+   */
+  --color-violet-deep: #7957f0;
+}
+
+/*
+ * Type. Inter's ₦ comes first in every stack: none of the three families has
+ * ₦ outside a large latin-ext file. Prices use the Inter capitals subset.
+ */
+@theme inline {
+  --font-display: var(--font-naira), var(--font-unbounded), ui-sans-serif, sans-serif;
+  --font-condensed: var(--font-naira), var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-naira), var(--font-onest), ui-sans-serif, system-ui, sans-serif;
+  --font-price: var(--font-inter-caps), var(--font-onest), ui-sans-serif, sans-serif;
+}
+
+/* Fluid sizes interpolate linearly from the 390 frame to the 1440 frame. */
+@theme {
+  --text-h2: clamp(2.25rem, 1.786rem + 1.905vw, 3.5rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.03em;
+
+  --text-faq-title: clamp(1.875rem, 1.271rem + 2.476vw, 3.5rem);
+  --text-faq-title--line-height: 1;
+  --text-faq-title--letter-spacing: -0.03em;
+
+  --text-partners: clamp(1.75rem, 1.471rem + 1.143vw, 2.5rem);
+  --text-partners--line-height: 1;
+  --text-partners--letter-spacing: -0.02em;
+
+  --text-footer: clamp(3.25rem, 1.671rem + 6.476vw, 7.5rem);
+  --text-footer--line-height: 0.96;
+
+  --text-eyebrow: clamp(0.6875rem, 0.641rem + 0.19vw, 0.8125rem);
+  --text-eyebrow--line-height: 1.5;
+  --text-eyebrow--letter-spacing: 0.14em;
+
+  --text-logo: clamp(1.875rem, 1.782rem + 0.381vw, 2.125rem);
+
+  --text-artist: clamp(2.375rem, 2.05rem + 1.333vw, 3.25rem);
+  --text-meta: clamp(0.8125rem, 0.766rem + 0.19vw, 0.9375rem);
+  --text-meta--line-height: 1.5;
+
+  --text-count: clamp(1.875rem, 1.179rem + 2.857vw, 3.75rem);
+  --text-count--line-height: 1;
+  --text-count--letter-spacing: -0.02em;
+
+  --text-ticket: clamp(1.625rem, 1.532rem + 0.381vw, 1.875rem);
+  --text-price: clamp(2.5rem, 2.314rem + 0.762vw, 3rem);
+  --text-price--letter-spacing: -0.04em;
+
+  --text-lead: clamp(1rem, 0.93rem + 0.286vw, 1.1875rem);
+  --text-lead--line-height: 1.5;
+
+  --text-intro: clamp(1rem, 0.954rem + 0.19vw, 1.125rem);
+  --text-intro--line-height: 1.5;
+
+  --text-perk: clamp(0.9375rem, 0.914rem + 0.095vw, 1rem);
+
+  --text-small: clamp(0.875rem, 0.852rem + 0.095vw, 0.9375rem);
+
+  --text-question: clamp(1.125rem, 1.032rem + 0.381vw, 1.375rem);
+  --text-question--line-height: 1.5;
+
+  --text-answer: clamp(1rem, 0.977rem + 0.095vw, 1.0625rem);
+  --text-answer--line-height: 1.5;
+
+  --text-info: clamp(0.9375rem, 0.868rem + 0.286vw, 1.125rem);
+  --text-info--line-height: 1.5;
+
+  --text-links: clamp(0.875rem, 0.829rem + 0.19vw, 1rem);
+  --text-links--line-height: 1.5;
+
+  --text-legal: clamp(0.75rem, 0.727rem + 0.095vw, 0.8125rem);
+  --text-legal--line-height: 1.5;
+
+  --text-marquee: clamp(0.75rem, 0.68rem + 0.286vw, 0.9375rem);
+  --text-marquee--line-height: 1.2;
+  --text-marquee--letter-spacing: 0.04em;
+
+  --text-ribbon: clamp(0.9375rem, 0.775rem + 0.667vw, 1.375rem);
+
+  --radius-pill: 99px;
+}
+
+:root {
+  /* 20px page margin at 390, 120px at 1440. */
+  --gutter: clamp(1.25rem, -1.071rem + 9.524vw, 7.5rem);
+  --color-focus: var(--color-yellow);
+}
+
+@layer base {
+  body {
+    @apply bg-black font-sans text-white;
+  }
+
+  /* Opening a dialog (menu, ticket sheet) locks page scroll. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--color-yellow);
+    color: var(--color-black);
+  }
+}
+
+/* The Figma grid: 1px #1B1B1E lines every 32px on mobile, 48px on desktop. */
+@utility grid-bg {
+  --cell: 32px;
+  background-image:
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+
+  @variant lg {
+    --cell: 48px;
+  }
+}
+
+/* Content columns: 1200px (header, footer) and 1120px (sections) at 1440. */
+@utility container-page {
+  width: min(100% - 2 * var(--gutter), 75rem);
+  margin-inline: auto;
+}
+
+@utility container-narrow {
+  width: min(100% - 2 * var(--gutter), 70rem);
+  margin-inline: auto;
+}
+
+/* The focus ring flips to black on yellow and coloured surfaces. */
+@utility surface-light {
+  --color-focus: var(--color-black);
+}
+
+/*
+ * Far-below-the-fold sections skip rendering until they're near the viewport.
+ */
+@utility defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Infinite marquee: the track holds two identical halves and slides one along. */
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite var(--marquee-direction, normal);
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  :where(.marquee:hover) & {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
+/* Hero load reveal. Starts at 0.01 opacity so first paint still counts for LCP. */
+@keyframes line-up {
+  from {
+    opacity: 0.01;
+    translate: 0 0.25em;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0.01;
+    translate: 0 16px;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+/* Cursor name tags wander inside a small box that points away from the headline. */
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  25% {
+    translate: calc(var(--dx) * 0.6) calc(var(--dy) * 1);
+  }
+  50% {
+    translate: calc(var(--dx) * 1) calc(var(--dy) * 0.35);
+  }
+  75% {
+    translate: calc(var(--dx) * 0.25) calc(var(--dy) * 0.8);
+  }
+}
+
+@keyframes bob {
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    rotate: var(--tilt, 0deg);
+  }
+  25% {
+    rotate: calc(var(--tilt, 0deg) - 6deg);
+  }
+  50% {
+    rotate: calc(var(--tilt, 0deg) + 5deg);
+  }
+  75% {
+    rotate: calc(var(--tilt, 0deg) - 3deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0.01;
+  }
+}
+
+/* A line-up row jumps to its set on The route; the set flashes once. */
+@keyframes flash {
+  0%,
+  60% {
+    box-shadow: 0 0 0 6px var(--color-yellow);
+  }
 }

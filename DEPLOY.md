@@ -23,5 +23,5 @@ pnpm measure      # first-load JS per page, gzip
 pnpm lighthouse   # mobile Lighthouse against out/, reports in reports/lighthouse
 ```
 
-Images are pre-rendered: after changing anything in `images/`, run `pnpm images` and commit the
-results in `public/img/` and `src/lib/images.gen.ts`.
+The design has no photos, so the image pipeline (`pnpm images`) isn't wired up. Fonts are
+self-hosted subsets in `src/fonts/` plus `next/font/google`; see `src/app/layout.tsx`.
