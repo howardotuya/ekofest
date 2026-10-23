@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "../styles/preset.css";
+
+/* Colour variables from Figma (file Xa7M6UgrIixgnPLXosVhbq). */
+@theme {
+  --color-black: #0b0b0c;
+  --color-grid: #1b1b1e;
+  --color-white: #ffffff;
+  --color-cream: #f6eed8;
+  --color-muted: #9a9aa2;
+  --color-mint: #8ef5ae;
+  --color-yellow: #f4f046;
+  --color-violet: #8b6cff;
+  --color-pink: #ff5fa2;
+  --color-orange: #ff6b2c;
+}

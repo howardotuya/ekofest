@@ -1,0 +1,6 @@
+pnpm-lock.yaml
+.next/
+out/
+reports/
+public/img/
+src/lib/images.gen.ts
