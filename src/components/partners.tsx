@@ -34,7 +34,7 @@ export function Partners() {
         />
         <h2
           id="partners-title"
-          className="reveal relative text-center font-display text-partners font-black uppercase lg:absolute lg:inset-x-0 lg:top-188 lg:text-u-40"
+          className="relative reveal text-center font-display text-partners font-black uppercase lg:absolute lg:inset-x-0 lg:top-188 lg:text-u-40"
         >
           {partners.title}
         </h2>

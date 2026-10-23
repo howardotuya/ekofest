@@ -24,7 +24,10 @@ export function Cursor({ flip, ...props }: IconProps & { flip?: boolean }) {
 export function StarSticker(props: IconProps) {
   return (
     <svg viewBox="0 0 110 110" aria-hidden="true" {...props}>
-      <path d="M55 0 63.8 41.8 110 55 63.8 68.2 55 110 46.2 68.2 0 55 46.2 41.8 55 0Z" fill="#F4F046" />
+      <path
+        d="M55 0 63.8 41.8 110 55 63.8 68.2 55 110 46.2 68.2 0 55 46.2 41.8 55 0Z"
+        fill="#F4F046"
+      />
     </svg>
   );
 }

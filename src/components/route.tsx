@@ -50,7 +50,7 @@ function NightStops({ night, n }: { night: Night; n: number }) {
           aria-hidden="true"
           data-f={f}
           className={cn(
-            "pop relative z-10 flex size-[72px] shrink-0 items-center justify-center rounded-full border-5 border-black bg-cream font-display text-[22px] leading-none font-black tracking-[-0.02em] text-black",
+            "relative z-10 flex size-[72px] shrink-0 pop items-center justify-center rounded-full border-5 border-black bg-cream font-display text-[22px] leading-none font-black tracking-[-0.02em] text-black",
             "lg:size-96 lg:border-6 lg:text-u-30",
             placed,
           )}
@@ -86,7 +86,7 @@ function NightStops({ night, n }: { night: Night; n: number }) {
               // Pops when the road reaches the label's leading edge (labels are 210px).
               data-f={(along(n, sx) - 105 / LENGTH).toFixed(4)}
               className={cn(
-                "pop flex h-[76px] scroll-mt-[30vh] flex-col justify-center rounded-[14px] pl-4 target:animate-[flash_1.6s_var(--ease-out-expo)]",
+                "flex h-[76px] pop scroll-mt-[30vh] flex-col justify-center rounded-[14px] pl-4 target:animate-[flash_1.6s_var(--ease-out-expo)]",
                 headliner ? toneFill[night.tone] : "border border-grid bg-panel pl-[15px]",
                 // Desktop: a label on the road, centred on it; headliners get a box.
                 "lg:h-44 lg:flex-row lg:items-center lg:justify-center lg:rounded-none lg:bg-transparent lg:p-0 lg:text-black",
@@ -143,7 +143,7 @@ export function Route() {
       <div className="@container mx-auto mt-14 max-w-[1440px] lg:mt-[13px]">
         <div
           data-route=""
-          className="route-progress relative max-lg:container-page lg:h-[calc(100cqi*820/1440)] lg:[--spacing:calc(100cqi/1440)]"
+          className="relative route-progress max-lg:container-page lg:h-[calc(100cqi*820/1440)] lg:[--spacing:calc(100cqi/1440)]"
         >
           {/* Desktop road. The mask strokes the same path from 0 to --p. */}
           <svg
@@ -153,7 +153,14 @@ export function Route() {
             className="absolute inset-0 size-full max-lg:hidden"
           >
             <defs>
-              <mask id="road-drawn" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="820">
+              <mask
+                id="road-drawn"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="1440"
+                height="820"
+              >
                 <path
                   d={ROAD}
                   pathLength={1}
@@ -180,7 +187,7 @@ export function Route() {
 
           <StarSticker
             data-f={(along(1, 1200) - 0.02).toFixed(4)}
-            className="pop absolute top-463 left-1305 size-70 -rotate-10 max-lg:hidden"
+            className="absolute top-463 left-1305 size-70 pop -rotate-10 max-lg:hidden"
           />
 
           <ol aria-label="Three nights" className="relative lg:static">
@@ -191,7 +198,7 @@ export function Route() {
 
           <p
             data-f="0.99"
-            className="pop mt-4 pl-4 font-display text-lg leading-none font-black tracking-[-0.01em] text-yellow uppercase lg:absolute lg:top-746 lg:left-1270 lg:m-0 lg:p-0 lg:text-u-22"
+            className="mt-4 pop pl-4 font-display text-lg leading-none font-black tracking-[-0.01em] text-yellow uppercase lg:absolute lg:top-746 lg:left-1270 lg:m-0 lg:p-0 lg:text-u-22"
           >
             {route.finish}
           </p>

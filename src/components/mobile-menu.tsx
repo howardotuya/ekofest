@@ -50,7 +50,7 @@ export function MobileMenu() {
           trigger.current?.focus({ preventScroll: true });
         }}
         className={cn(
-          "grid-bg fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none bg-black p-0 text-white lg:hidden",
+          "fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none bg-black grid-bg p-0 text-white lg:hidden",
           "transition-[clip-path,display,overlay] transition-discrete duration-500 ease-out-expo motion-reduce:transition-none",
           "[clip-path:inset(0_0_100%_0)] open:[clip-path:inset(0)] starting:open:[clip-path:inset(0_0_100%_0)]",
           "backdrop:bg-transparent",

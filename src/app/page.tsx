@@ -14,7 +14,7 @@ const BUILT_AT = Math.floor(Date.now() / 1000);
 
 export default function Home() {
   return (
-    <div className="grid-bg overflow-x-clip">
+    <div className="overflow-x-clip grid-bg">
       <SiteHeader />
       <main>
         <Hero builtAt={BUILT_AT} />

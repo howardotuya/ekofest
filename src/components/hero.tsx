@@ -36,9 +36,7 @@ function NameTag({
         "motion-safe:animate-[drift_9s_ease-in-out_infinite]",
         className,
       )}
-      style={
-        { "--dx": drift.dx, "--dy": drift.dy, animationDelay: drift.delay } as CSSProperties
-      }
+      style={{ "--dx": drift.dx, "--dy": drift.dy, animationDelay: drift.delay } as CSSProperties}
     >
       <Cursor flip={flip} className={cn("absolute", cursorClassName)} />
       <span

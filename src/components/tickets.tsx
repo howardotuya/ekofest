@@ -10,7 +10,7 @@ function TicketCard({ ticket, index }: { ticket: Ticket; index: number }) {
   return (
     <li
       className={cn(
-        "reveal @container",
+        "@container reveal",
         // Mobile shows VIP first, as in the mobile frame.
         ticket.id === "vip" && "max-lg:order-first",
       )}
@@ -19,8 +19,8 @@ function TicketCard({ ticket, index }: { ticket: Ticket; index: number }) {
       <article
         aria-labelledby={`ticket-${ticket.id}`}
         className={cn(
-          "surface-light relative flex h-full flex-col overflow-hidden rounded-[28px] p-6",
-          "transition-[translate,box-shadow] duration-500 ease-out-expo hover:-translate-y-2 hover:shadow-[0_24px_48px_rgb(0_0_0/0.45)] focus-within:-translate-y-2",
+          "relative flex h-full flex-col overflow-hidden rounded-[28px] p-6 surface-light",
+          "transition-[translate,box-shadow] duration-500 ease-out-expo focus-within:-translate-y-2 hover:-translate-y-2 hover:shadow-[0_24px_48px_rgb(0_0_0/0.45)]",
           // Desktop cards are Figma's 356 × 540 card, scaled to the column.
           "lg:min-h-[calc(100cqi*540/356)] lg:rounded-[calc(100cqi*32/356)] lg:p-[calc(100cqi*30/356)] lg:pb-[calc(100cqi*32/356)] lg:[--spacing:calc(100cqi/356)]",
           ticketFill[ticket.tone],
@@ -61,7 +61,7 @@ function TicketCard({ ticket, index }: { ticket: Ticket; index: number }) {
           aria-haspopup="dialog"
           className={cn(
             pressable,
-            "group/buy relative mt-auto h-[52px] w-full gap-1.5 rounded-pill lg:gap-2.5 bg-black text-sm font-bold text-white uppercase hover:bg-[#232327]",
+            "group/buy relative mt-auto h-[52px] w-full gap-1.5 rounded-pill bg-black text-sm font-bold text-white uppercase hover:bg-[#232327] lg:gap-2.5",
             "max-lg:mt-[41px] lg:h-56 lg:text-[max(0.875rem,calc(var(--spacing)*15))]",
           )}
         >

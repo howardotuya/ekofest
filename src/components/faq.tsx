@@ -13,8 +13,8 @@ export function Faq() {
       </h2>
       <div className="mt-[30px] border-t border-grid lg:mt-[54px]">
         {faq.items.map((item) => (
-          <details key={item.id} id={item.id} className="faq-item group border-b border-grid">
-            <summary className="flex cursor-pointer list-none items-start justify-between gap-6 pt-[22px] pb-[23px] [&::-webkit-details-marker]:hidden lg:min-h-[109px] lg:pt-7 lg:pb-12">
+          <details key={item.id} id={item.id} className="group faq-item border-b border-grid">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-6 pt-[22px] pb-[23px] lg:min-h-[109px] lg:pt-7 lg:pb-12 [&::-webkit-details-marker]:hidden">
               <h3 className="text-question font-bold lg:w-[400px]">{item.q}</h3>
               <span
                 aria-hidden="true"

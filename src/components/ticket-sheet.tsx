@@ -61,7 +61,7 @@ export function TicketSheet() {
         "backdrop:transition-opacity backdrop:duration-500 starting:open:backdrop:opacity-0",
       )}
     >
-      <div className="grid-bg flex min-h-full flex-col gap-6 px-5 pt-5 pb-8 lg:px-8 lg:pt-8">
+      <div className="flex min-h-full flex-col gap-6 grid-bg px-5 pt-5 pb-8 lg:px-8 lg:pt-8">
         <div className="flex items-center justify-between">
           <p id={`${uid}-title`} className="text-eyebrow font-bold text-muted uppercase">
             Your tickets
@@ -78,7 +78,7 @@ export function TicketSheet() {
 
         <div
           className={cn(
-            "surface-light relative overflow-hidden rounded-[22px] p-6",
+            "relative overflow-hidden rounded-[22px] p-6 surface-light",
             ticketFill[ticket.tone],
           )}
         >
@@ -93,7 +93,11 @@ export function TicketSheet() {
           </p>
         </div>
 
-        <div role="group" aria-labelledby={`${uid}-qty`} className="flex items-center justify-between">
+        <div
+          role="group"
+          aria-labelledby={`${uid}-qty`}
+          className="flex items-center justify-between"
+        >
           <p id={`${uid}-qty`} className="text-question font-bold">
             How many?
           </p>
@@ -131,7 +135,11 @@ export function TicketSheet() {
           </dt>
           <dd className="text-right font-price font-bold">{total}</dd>
           <dt className="text-question font-bold text-white">Total</dt>
-          <dd aria-live="polite" aria-atomic="true" className="text-right font-price text-[32px] leading-none font-bold tracking-[-0.03em] text-white">
+          <dd
+            aria-live="polite"
+            aria-atomic="true"
+            className="text-right font-price text-[32px] leading-none font-bold tracking-[-0.03em] text-white"
+          >
             {total}
           </dd>
         </dl>
@@ -142,10 +150,11 @@ export function TicketSheet() {
               role="status"
               className="rounded-[18px] border-[1.5px] border-dashed border-yellow/60 p-5 motion-safe:animate-[sheet-in_400ms_var(--ease-out-expo)_both]"
             >
-              <p className="text-question font-bold text-yellow">Paystack checkout would open here.</p>
+              <p className="text-question font-bold text-yellow">
+                Paystack checkout would open here.
+              </p>
               <p className="mt-1 text-sm text-muted">
-                Èkó Fest is a concept, so nothing is charged. {quantity} × {ticket.name},{" "}
-                {total}.
+                Èkó Fest is a concept, so nothing is charged. {quantity} × {ticket.name}, {total}.
               </p>
             </div>
           ) : null}

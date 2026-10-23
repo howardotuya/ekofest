@@ -28,7 +28,7 @@ function Badge({ className }: { className?: string }) {
 export function SiteFooter() {
   const [first, second] = footer.title;
   return (
-    <footer className="surface-light mt-10 bg-yellow text-black lg:mt-[60px]">
+    <footer className="mt-10 bg-yellow text-black surface-light lg:mt-[60px]">
       <div className="relative container-page pt-[50px] pb-[54px] lg:pt-[90px] lg:pb-[50px]">
         <p className="font-display text-footer font-black tracking-[-0.03em] uppercase lg:tracking-[-0.05em]">
           {first}

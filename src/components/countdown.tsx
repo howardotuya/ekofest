@@ -6,10 +6,13 @@ import { cn } from "@/lib/cn";
 
 // Ticks once a second, on the second.
 function subscribe(onTick: () => void) {
-  let timer = window.setTimeout(function tick() {
-    onTick();
-    timer = window.setTimeout(tick, 1000 - (Date.now() % 1000));
-  }, 1000 - (Date.now() % 1000));
+  let timer = window.setTimeout(
+    function tick() {
+      onTick();
+      timer = window.setTimeout(tick, 1000 - (Date.now() % 1000));
+    },
+    1000 - (Date.now() % 1000),
+  );
   return () => window.clearTimeout(timer);
 }
 
@@ -17,7 +20,12 @@ const nowInSeconds = () => Math.floor(Date.now() / 1000);
 
 function remaining(seconds: number) {
   const left = Math.max(0, Math.floor(OPENS_AT / 1000) - seconds);
-  return [Math.floor(left / 86400), Math.floor(left / 3600) % 24, Math.floor(left / 60) % 60, left % 60];
+  return [
+    Math.floor(left / 86400),
+    Math.floor(left / 3600) % 24,
+    Math.floor(left / 60) % 60,
+    left % 60,
+  ];
 }
 
 /**

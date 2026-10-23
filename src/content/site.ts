@@ -35,11 +35,35 @@ export const lineup = {
   eyebrow: "True talent",
   title: "Meet the line-up",
   artists: [
-    { name: "Àdùnní", genre: "Afro-soul", note: "Headliner, Friday", tone: "yellow", set: "fri-headliner" },
-    { name: "Bayo Kaze", genre: "Afrobeats", note: "Headliner, Saturday", tone: "violet", set: "sat-headliner" },
+    {
+      name: "Àdùnní",
+      genre: "Afro-soul",
+      note: "Headliner, Friday",
+      tone: "yellow",
+      set: "fri-headliner",
+    },
+    {
+      name: "Bayo Kaze",
+      genre: "Afrobeats",
+      note: "Headliner, Saturday",
+      tone: "violet",
+      set: "sat-headliner",
+    },
     { name: "Ifé", genre: "Alté", note: "Sunday", tone: "pink", set: "sun-ife" },
-    { name: "Deji Wave", genre: "Amapiano", note: "Sunday closer", tone: "mint", set: "sun-headliner" },
-    { name: "+ 12 special guests", genre: null, note: "To be announced in November", tone: "muted", set: null },
+    {
+      name: "Deji Wave",
+      genre: "Amapiano",
+      note: "Sunday closer",
+      tone: "mint",
+      set: "sun-headliner",
+    },
+    {
+      name: "+ 12 special guests",
+      genre: null,
+      note: "To be announced in November",
+      tone: "muted",
+      set: null,
+    },
   ],
 } satisfies {
   eyebrow: string;

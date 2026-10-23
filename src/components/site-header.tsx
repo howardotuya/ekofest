@@ -13,10 +13,7 @@ function TopMarquee() {
         {[0, 1].map((half) => (
           <div key={half} className="flex shrink-0">
             {Array.from({ length: 6 }, (_, i) => (
-              <span
-                key={i}
-                className="pr-[1.33em] text-marquee font-bold whitespace-pre uppercase"
-              >
+              <span key={i} className="pr-[1.33em] text-marquee font-bold whitespace-pre uppercase">
                 {item}
               </span>
             ))}
@@ -65,7 +62,10 @@ export function SiteHeader() {
 
         <a
           href={hero.cta.href}
-          className={cn(yellowButton, "ml-auto px-3.5 py-2 text-xs leading-[normal] uppercase shadow-none lg:hidden")}
+          className={cn(
+            yellowButton,
+            "ml-auto px-3.5 py-2 text-xs leading-[normal] uppercase shadow-none lg:hidden",
+          )}
         >
           Tickets
         </a>

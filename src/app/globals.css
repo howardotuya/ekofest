@@ -30,10 +30,13 @@
  * families for anything else. Prices use the Inter capitals subset.
  */
 @theme inline {
-  --font-display: var(--font-naira), var(--font-unbounded-black), var(--font-unbounded), ui-sans-serif, sans-serif;
-  --font-display-bold: var(--font-naira), var(--font-unbounded-bold), var(--font-unbounded), ui-sans-serif, sans-serif;
+  --font-display:
+    var(--font-naira), var(--font-unbounded-black), var(--font-unbounded), ui-sans-serif, sans-serif;
+  --font-display-bold:
+    var(--font-naira), var(--font-unbounded-bold), var(--font-unbounded), ui-sans-serif, sans-serif;
   --font-condensed:
-    var(--font-naira), var(--font-big-shoulders), var(--font-big-shoulders-full), "Arial Narrow", sans-serif;
+    var(--font-naira), var(--font-big-shoulders), var(--font-big-shoulders-full), "Arial Narrow",
+    sans-serif;
   --font-sans: var(--font-naira), var(--font-onest), ui-sans-serif, system-ui, sans-serif;
   --font-price: var(--font-inter-caps), var(--font-onest), ui-sans-serif, sans-serif;
 }
