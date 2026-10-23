@@ -49,7 +49,7 @@ export function Countdown({ builtAt, className }: { builtAt: number; className?:
               :
             </span>
           )}
-          <div className="flex flex-col items-center rounded-[14px] border border-grid bg-panel pt-[13px] pb-[13px] md:w-[2.5em] md:rounded-none md:border-0 md:bg-transparent md:p-0">
+          <div className="flex flex-col items-center rounded-[14px] border border-grid bg-panel py-3 md:w-[2.5em] md:rounded-none md:border-0 md:bg-transparent md:p-0">
             <span className="font-display text-[1.875rem] leading-none font-black tracking-[-0.02em] tabular-nums md:text-[1em]">
               {String(values[i]).padStart(2, "0")}
             </span>

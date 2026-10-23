@@ -129,9 +129,9 @@ export function TicketSheet() {
           <dt>
             {quantity} × {ticket.name}
           </dt>
-          <dd className="font-price font-bold">{total}</dd>
+          <dd className="text-right font-price font-bold">{total}</dd>
           <dt className="text-question font-bold text-white">Total</dt>
-          <dd aria-live="polite" aria-atomic="true" className="font-price text-[32px] leading-none font-bold tracking-[-0.03em] text-white">
+          <dd aria-live="polite" aria-atomic="true" className="text-right font-price text-[32px] leading-none font-bold tracking-[-0.03em] text-white">
             {total}
           </dd>
         </dl>

@@ -87,7 +87,7 @@ export function Hero({ builtAt }: { builtAt: number }) {
   const [[l1a, l1b] = [], [l2] = [], [l3a, l3b] = []] = hero.lines;
   return (
     <section aria-labelledby="hero-title" className="@container mx-auto max-w-[1440px]">
-      <div className="relative container-page pt-[62.5px] md:w-full md:pt-[6.21cqi]">
+      <div className="relative container-page pt-[62.5px] md:w-full md:pt-[max(6.21cqi,72px)]">
         {/* Mobile sticker, top right above the headline. */}
         <SmileySticker className="absolute top-[15px] right-2 size-[70px] rotate-12 motion-safe:animate-[pop_700ms_var(--ease-out-expo)_300ms_both] md:hidden" />
 
@@ -138,7 +138,7 @@ export function Hero({ builtAt }: { builtAt: number }) {
                 tagClassName="top-[22px] left-[20px] bg-violet-deep text-white"
               />
               {l3a} <br className="md:hidden" />
-              <span className="relative inline-block">
+              <span className="relative inline-block align-top">
                 {l3b}
                 {/* Mobile: Bayo Kaze sits just right of "EARTH". */}
                 <NameTag
@@ -164,10 +164,10 @@ export function Hero({ builtAt }: { builtAt: number }) {
 
         <Countdown
           builtAt={builtAt}
-          className="mt-[42px] motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_460ms_both] md:mt-[2.99cqi]"
+          className="mt-[42px] motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_460ms_both] md:mt-[max(2.99cqi,32px)]"
         />
 
-        <div className="mt-[22px] motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_540ms_both] md:mt-[3.54cqi] md:text-center">
+        <div className="mt-[22px] motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_540ms_both] md:mt-[max(3.54cqi,40px)] md:text-center">
           <a
             href={hero.cta.href}
             className={cn(
