@@ -126,8 +126,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
+    // The inline route script adds a class to <html> before hydration.
     <html
       lang="en"
+      suppressHydrationWarning
       className={[
         unboundedBlack,
         unboundedBold,
