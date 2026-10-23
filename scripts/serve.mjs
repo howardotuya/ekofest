@@ -56,7 +56,11 @@ export function serve(port = 4000) {
     let stream = createReadStream(target);
     if (COMPRESSIBLE.has(ext) && accept.includes("br")) {
       res.setHeader("Content-Encoding", "br");
-      stream = stream.pipe(zlib.createBrotliCompress());
+      // Quality 5 is what CDNs use on the fly; the default (11) takes hundreds of ms
+      // per page and would show up as slow server response in Lighthouse.
+      stream = stream.pipe(
+        zlib.createBrotliCompress({ params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } }),
+      );
     } else if (COMPRESSIBLE.has(ext) && accept.includes("gzip")) {
       res.setHeader("Content-Encoding", "gzip");
       stream = stream.pipe(zlib.createGzip());
