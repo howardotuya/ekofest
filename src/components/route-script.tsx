@@ -1,9 +1,9 @@
 // The route's motion, inline so it costs no client component:
-// - pops each [data-f] element in once the road reaches it (data-f is how far
-//   along the desktop road it sits; on the vertical mobile road it's measured);
+// - pops each day stop ([data-f]) in once the progress line reaches it (data-f
+//   is how far along the desktop road it sits; on the vertical road it's measured);
 // - where scroll-driven animations are missing, also sets --p, which draws the
-//   road. Same mapping as the CSS: the road's head sits at 70% of the viewport.
-// Reduced motion: nothing runs, so the road and every set are shown at once.
+//   progress line. Same mapping as the CSS: its head sits at 70% of the viewport.
+// Reduced motion: nothing runs, so the line is complete and every stop shown.
 const script = `(() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const sda = CSS.supports("animation-timeline: view()");

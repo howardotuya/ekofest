@@ -83,10 +83,8 @@ function NightStops({ night, n }: { night: Night; n: number }) {
             <li
               key={set.time + set.act}
               id={set.id ? `set-${set.id}` : undefined}
-              // Pops when the road reaches the label's leading edge (labels are 210px).
-              data-f={(along(n, sx) - 105 / LENGTH).toFixed(4)}
               className={cn(
-                "flex h-[76px] pop scroll-mt-[30vh] flex-col justify-center rounded-[14px] pl-4 target:animate-[flash_1.6s_var(--ease-out-expo)]",
+                "flex h-[76px] scroll-mt-[30vh] flex-col justify-center rounded-[14px] pl-4 target:animate-[flash_1.6s_var(--ease-out-expo)]",
                 headliner ? toneFill[night.tone] : "border border-grid bg-panel pl-[15px]",
                 // Desktop: a label on the road, centred on it; headliners get a box.
                 "lg:h-44 lg:flex-row lg:items-center lg:justify-center lg:rounded-none lg:bg-transparent lg:p-0 lg:text-black",
@@ -125,9 +123,9 @@ function NightStops({ night, n }: { night: Night; n: number }) {
 
 /**
  * The schedule as a road. Desktop draws Figma's snaking road; smaller screens a
- * vertical road with a card per set. The road draws itself as you scroll (a
- * scroll-driven animation on --p, or route-script.tsx where that's missing),
- * and stops and sets pop in as it reaches them.
+ * vertical road with a card per set. As you scroll, a yellow progress line fills
+ * the road's dark edge (a scroll-driven animation on --p, or route-script.tsx
+ * where that's missing) and each day stop pops in as the line reaches it.
  */
 export function Route() {
   return (
@@ -145,50 +143,38 @@ export function Route() {
           data-route=""
           className="relative route-progress max-lg:container-page lg:h-[calc(100cqi*820/1440)] lg:[--spacing:calc(100cqi/1440)]"
         >
-          {/* Desktop road. The mask strokes the same path from 0 to --p. */}
+          {/*
+            Desktop road. The yellow stroke is the progress line: drawn from 0 to
+            --p under the cream surface, so it shows as the road's two edges.
+          */}
           <svg
             aria-hidden="true"
             viewBox="0 0 1440 820"
             fill="none"
             className="absolute inset-0 size-full max-lg:hidden"
           >
-            <defs>
-              <mask
-                id="road-drawn"
-                maskUnits="userSpaceOnUse"
-                x="0"
-                y="0"
-                width="1440"
-                height="820"
-              >
-                <path
-                  d={ROAD}
-                  pathLength={1}
-                  stroke="white"
-                  strokeWidth="112"
-                  className="[stroke-dasharray:1] [stroke-dashoffset:calc(1-var(--p))]"
-                />
-              </mask>
-            </defs>
-            <g mask="url(#road-drawn)">
-              <path d={ROAD} stroke="#2C2C30" strokeWidth="104" />
-              <path d={ROAD} stroke="#F6EED8" strokeWidth="92" />
-              <path d={LANES} stroke="#CFC5AB" strokeWidth="92" />
-            </g>
+            <path d={ROAD} stroke="#2C2C30" strokeWidth="104" />
+            <path
+              d={ROAD}
+              pathLength={1}
+              stroke="#F4F046"
+              strokeWidth="104"
+              className="[stroke-dasharray:1] [stroke-dashoffset:calc(1-var(--p))]"
+            />
+            <path d={ROAD} stroke="#F6EED8" strokeWidth="92" />
+            <path d={LANES} stroke="#CFC5AB" strokeWidth="92" />
           </svg>
 
-          {/* Mobile road: tarmac edge, cream surface, a lane mark every 74px. */}
+          {/* Mobile road: tarmac edge (yellow down to --p), cream surface, a lane mark every 74px. */}
           <div
             aria-hidden="true"
-            className="absolute top-[-28px] bottom-[22px] left-[18px] w-16 rounded-full bg-tarmac p-1 [clip-path:inset(0_0_calc((1-var(--p))*100%)_0_round_32px)] lg:hidden"
+            className="absolute top-[-28px] bottom-[22px] left-[18px] w-16 rounded-full bg-tarmac p-1 lg:hidden"
           >
-            <div className="size-full rounded-full bg-cream bg-[repeating-linear-gradient(to_bottom,transparent_0_73px,var(--color-lane)_73px_75px)] bg-position-[0_29px]" />
+            <div className="absolute inset-0 rounded-full bg-yellow [clip-path:inset(0_0_calc((1-var(--p))*100%)_0_round_32px)]" />
+            <div className="relative size-full rounded-full bg-cream bg-[repeating-linear-gradient(to_bottom,transparent_0_73px,var(--color-lane)_73px_75px)] bg-position-[0_29px]" />
           </div>
 
-          <StarSticker
-            data-f={(along(1, 1200) - 0.02).toFixed(4)}
-            className="absolute top-463 left-1305 size-70 pop -rotate-10 max-lg:hidden"
-          />
+          <StarSticker className="absolute top-463 left-1305 size-70 -rotate-10 max-lg:hidden" />
 
           <ol aria-label="Three nights" className="relative lg:static">
             {route.nights.map((night, n) => (
@@ -196,10 +182,7 @@ export function Route() {
             ))}
           </ol>
 
-          <p
-            data-f="0.99"
-            className="mt-4 pop pl-4 font-display text-lg leading-none font-black tracking-[-0.01em] text-yellow uppercase lg:absolute lg:top-746 lg:left-1270 lg:m-0 lg:p-0 lg:text-u-22"
-          >
+          <p className="mt-4 pl-4 font-display text-lg leading-none font-black tracking-[-0.01em] text-yellow uppercase lg:absolute lg:top-746 lg:left-1270 lg:m-0 lg:p-0 lg:text-u-22">
             {route.finish}
           </p>
         </div>

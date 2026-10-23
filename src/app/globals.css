@@ -272,9 +272,9 @@
 }
 
 /*
- * The route. --p (0–1) is how much of the road is drawn: a scroll-driven
- * animation where supported, otherwise route-script.tsx sets it. Either way the
- * head of the road sits 70% of the way down the viewport.
+ * The route. --p (0–1) is how far the progress line along the road has got: a
+ * scroll-driven animation where supported, otherwise route-script.tsx sets it.
+ * Either way the head of the line sits 70% of the way down the viewport.
  */
 @property --p {
   syntax: "<number>";
@@ -305,7 +305,7 @@
   }
 }
 
-/* Stops, sets and "Finish" pop in once the road reaches them (route-script.tsx). */
+/* Day stops pop in once the progress line reaches them (route-script.tsx). */
 @utility pop {
   :where(html.route-js) & {
     transition:
