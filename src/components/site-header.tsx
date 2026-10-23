@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { hero, marquee, nav } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { MobileMenu } from "./mobile-menu";
@@ -32,12 +33,13 @@ export function SiteHeader() {
       <TopMarquee />
       {/* 15.5px + the 40px menu button centres the row where Figma's 31px row sits. */}
       <header className="container-page flex items-center pt-[15.5px] lg:pt-8">
-        <a
+        <Link
           href="/"
+          prefetch={false}
           className="font-condensed text-logo leading-[0.92] font-black uppercase lg:leading-none lg:tracking-[-0.03em]"
         >
           Èkó Fest
-        </a>
+        </Link>
 
         <nav aria-label="Main" className="ml-auto max-lg:hidden">
           <ul className="flex gap-9 leading-normal font-medium">

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { hero, nav } from "@/content/site";
 import { cn } from "@/lib/cn";
@@ -57,13 +58,14 @@ export function MobileMenu() {
       >
         <div className="container-page flex h-full flex-col pt-[47.5px] pb-8">
           <div className="flex items-center justify-between">
-            <a
+            <Link
               href="/"
+              prefetch={false}
               onClick={hide}
               className="font-condensed text-logo leading-[0.92] font-black uppercase"
             >
               Èkó Fest
-            </a>
+            </Link>
             <button
               ref={close}
               type="button"
