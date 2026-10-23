@@ -17,7 +17,8 @@ export const nav = [
 export const marquee = ["Èkó Fest 2026", "12–14 December", "Lagos"];
 
 export const hero = {
-  lines: ["Lagos will be", "the loudest", "city on earth"],
+  // Three lines on desktop; the inner arrays break onto two lines on mobile.
+  lines: [["Lagos", "will be"], ["the loudest"], ["city on", "earth"]],
   description:
     "Three nights of Afrobeats, Alté and Amapiano at Tafawa Balewa Square. Brought to you by Èkó Sound.",
   cta: { label: "Get tickets", from: "From ₦25,000", href: "#tickets" },
@@ -64,6 +65,7 @@ export type Slot = { id?: string; time: string; act: string };
 export type Night = {
   stop: string;
   day: string;
+  label: string;
   date: string;
   tone: Exclude<Tone, "mint" | "muted">;
   sets: Slot[];
@@ -78,6 +80,7 @@ export const route = {
     {
       stop: "01",
       day: "Fri",
+      label: "Friday 12 December",
       date: "12 Dec",
       tone: "yellow",
       sets: [
@@ -90,6 +93,7 @@ export const route = {
     {
       stop: "02",
       day: "Sat",
+      label: "Saturday 13 December",
       date: "13 Dec",
       tone: "violet",
       sets: [
@@ -102,6 +106,7 @@ export const route = {
     {
       stop: "03",
       day: "Sun",
+      label: "Sunday 14 December",
       date: "14 Dec",
       tone: "pink",
       sets: [
