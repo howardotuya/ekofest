@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 /** Shared press/hover behaviour for every button-like element. */
 export const pressable =
   "inline-flex items-center justify-center whitespace-nowrap select-none " +
-  "transition-[background-color,color,box-shadow,scale,translate] duration-300 ease-out-expo active:scale-[0.97]";
+  "transition-[background-color,color,box-shadow,scale,translate] duration-300 ease-out-expo active:scale-[0.98]";
 
 /** Yellow pill with the soft yellow glow from Figma ("Get tickets"). */
 export const yellowButton =

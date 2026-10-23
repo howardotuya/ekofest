@@ -51,15 +51,15 @@ function NameTag({
   );
 }
 
-/** Headline line: the load-in rises line by line. */
-function Line({ i, className, children }: { i: number; className: string; children: ReactNode }) {
+/** Headline line: the load-in rises line by line (the whole hero settles within 900ms). */
+function Line({ i, className, children }: { i: number; className?: string; children: ReactNode }) {
   return (
     <span
       className={cn(
-        "relative block motion-safe:animate-[line-up_900ms_var(--ease-out-expo)_both] md:mx-auto md:w-fit",
+        "relative block motion-safe:animate-[line-up_600ms_var(--ease-out-expo)_both] md:mx-auto md:w-fit",
         className,
       )}
-      style={{ animationDelay: `${80 + i * 90}ms` }}
+      style={{ animationDelay: `${i * 70}ms` }}
     >
       {children}
     </span>
@@ -67,14 +67,23 @@ function Line({ i, className, children }: { i: number; className: string; childr
 }
 
 /** Desktop stickers, positioned in Figma pixels relative to the headline's top. */
-function Sticker({ className, children }: { className: string; children: ReactNode }) {
+function Sticker({
+  delay,
+  className,
+  children,
+}: {
+  delay: number;
+  className: string;
+  children: ReactNode;
+}) {
   return (
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute motion-safe:animate-[pop_700ms_var(--ease-out-expo)_both]",
+        "pointer-events-none absolute motion-safe:animate-[pop_500ms_var(--ease-out-expo)_both]",
         className,
       )}
+      style={{ animationDelay: `${delay}ms` }}
     >
       {children}
     </div>
@@ -87,17 +96,17 @@ export function Hero({ builtAt }: { builtAt: number }) {
     <section aria-labelledby="hero-title" className="@container mx-auto max-w-[1440px]">
       <div className="relative container-page pt-[62.5px] md:w-full md:pt-[max(6.21cqi,72px)]">
         {/* Mobile sticker, top right above the headline. */}
-        <SmileySticker className="absolute top-[15px] right-2 size-[70px] rotate-12 motion-safe:animate-[pop_700ms_var(--ease-out-expo)_300ms_both] md:hidden" />
+        <SmileySticker className="absolute top-[15px] right-2 size-[70px] rotate-12 motion-safe:animate-[pop_500ms_var(--ease-out-expo)_300ms_both] md:hidden" />
 
         <div className="relative">
           <div className="pointer-events-none absolute inset-x-0 top-0 [--spacing:calc(100cqi/1440)] max-md:hidden">
-            <Sticker className="top-50 left-81 size-145 [animation-delay:350ms]">
+            <Sticker delay={250} className="top-50 left-81 size-145">
               <SmileySticker className="m-12.75 size-120 rotate-14 motion-safe:animate-[bob_6s_ease-in-out_infinite]" />
             </Sticker>
-            <Sticker className="top-76 left-1290 h-132 w-100 [animation-delay:450ms]">
+            <Sticker delay={300} className="top-76 left-1290 h-132 w-100">
               <BoltSticker className="mx-10 my-6 h-120 w-80 -rotate-10 motion-safe:animate-[bob_7s_ease-in-out_1s_infinite]" />
             </Sticker>
-            <Sticker className="top-237 left-1230 size-130 [animation-delay:550ms]">
+            <Sticker delay={350} className="top-237 left-1230 size-130">
               <StarSticker className="m-10 size-110 -rotate-12 motion-safe:animate-[bob_8s_ease-in-out_0.5s_infinite]" />
             </Sticker>
           </div>
@@ -110,7 +119,7 @@ export function Hero({ builtAt }: { builtAt: number }) {
               "md:text-center md:text-[calc(100cqi*96/1440)] md:leading-[1.104] md:tracking-[-0.04em]",
             )}
           >
-            <Line i={0} className="">
+            <Line i={0}>
               {/* Desktop: Àdùnní hangs off the top-right corner of the first line. */}
               <NameTag
                 name="Àdùnní"
@@ -153,7 +162,7 @@ export function Hero({ builtAt }: { builtAt: number }) {
 
         <p
           className={cn(
-            "mt-5 text-lead text-muted motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_380ms_both]",
+            "mt-5 text-lead text-muted motion-safe:animate-[fade-up_600ms_var(--ease-out-expo)_200ms_both]",
             "md:mx-auto md:mt-[2.57cqi] md:w-[calc(100cqi*600/1440)] md:min-w-80 md:text-center",
           )}
         >
@@ -162,10 +171,10 @@ export function Hero({ builtAt }: { builtAt: number }) {
 
         <Countdown
           builtAt={builtAt}
-          className="mt-[42px] motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_460ms_both] md:mt-[max(2.99cqi,32px)]"
+          className="mt-[42px] motion-safe:animate-[fade-up_600ms_var(--ease-out-expo)_260ms_both] md:mt-[max(2.99cqi,32px)]"
         />
 
-        <div className="mt-[22px] motion-safe:animate-[fade-up_800ms_var(--ease-out-expo)_540ms_both] md:mt-[max(3.54cqi,40px)] md:text-center">
+        <div className="mt-[22px] motion-safe:animate-[fade-up_600ms_var(--ease-out-expo)_300ms_both] md:mt-[max(3.54cqi,40px)] md:text-center">
           <a
             href={hero.cta.href}
             className={cn(
