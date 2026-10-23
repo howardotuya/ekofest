@@ -15,7 +15,7 @@ function Ribbon({ text, className }: { text: string; className: string }) {
             {Array.from({ length: 6 }, (_, i) => (
               <span
                 key={i}
-                className="font-display text-ribbon leading-[normal] font-bold whitespace-pre uppercase"
+                className="font-display-bold text-ribbon leading-[normal] font-bold whitespace-pre uppercase"
               >
                 {text}
                 {"  —  "}
