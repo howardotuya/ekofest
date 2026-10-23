@@ -49,6 +49,7 @@ export function TicketSheet() {
     <dialog
       ref={dialog}
       aria-labelledby={`${uid}-title`}
+      data-lenis-prevent=""
       onClose={() => returnFocus.current?.focus({ preventScroll: true })}
       onClick={(event) => event.target === dialog.current && close()}
       className={cn(

@@ -350,3 +350,22 @@
     }
   }
 }
+
+/* Lenis (smooth-scroll.tsx): the rules from lenis/dist/lenis.css that apply here. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Lenis eases scrolling itself; native smooth scrolling on top would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}

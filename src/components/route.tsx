@@ -84,7 +84,7 @@ function NightStops({ night, n }: { night: Night; n: number }) {
               key={set.time + set.act}
               id={set.id ? `set-${set.id}` : undefined}
               className={cn(
-                "flex h-[76px] scroll-mt-[30vh] flex-col justify-center rounded-[14px] pl-4 target:animate-[flash_1.6s_var(--ease-out-expo)]",
+                "flex h-[76px] scroll-mt-[30vh] flex-col justify-center rounded-[14px] pl-4 target:animate-[flash_1.6s_var(--ease-out-expo)] [&.is-target]:animate-[flash_1.6s_var(--ease-out-expo)]",
                 headliner ? toneFill[night.tone] : "border border-grid bg-panel pl-[15px]",
                 // Desktop: a label on the road, centred on it; headliners get a box.
                 "lg:h-44 lg:flex-row lg:items-center lg:justify-center lg:rounded-none lg:bg-transparent lg:p-0 lg:text-black",

@@ -44,6 +44,7 @@ export function MobileMenu() {
         ref={dialog}
         id="mobile-menu"
         aria-label="Menu"
+        data-lenis-prevent=""
         onClose={() => {
           setOpen(false);
           // `close` fires after a link's hash scroll; don't yank the page back up.

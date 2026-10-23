@@ -6,6 +6,7 @@ import { Ribbons } from "@/components/ribbons";
 import { Route } from "@/components/route";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { TicketSheet } from "@/components/ticket-sheet";
 import { Tickets } from "@/components/tickets";
 
@@ -35,6 +36,7 @@ export default function Home() {
       </main>
       <SiteFooter />
       <TicketSheet />
+      <SmoothScroll />
     </div>
   );
 }
