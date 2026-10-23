@@ -3,6 +3,7 @@ import { Onest, Unbounded } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import { RevealScript } from "@/components/reveal-script";
+import { RouteScript } from "@/components/route-script";
 import "./globals.css";
 
 // Both are used above the fold, so their `latin` files are preloaded. The other
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     >
       <head>
         <RevealScript />
+        <RouteScript />
       </head>
       <body>{children}</body>
     </html>

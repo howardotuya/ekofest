@@ -264,3 +264,51 @@
     box-shadow: 0 0 0 6px var(--color-yellow);
   }
 }
+
+/*
+ * The route. --p (0–1) is how much of the road is drawn: a scroll-driven
+ * animation where supported, otherwise route-script.tsx sets it. Either way the
+ * head of the road sits 70% of the way down the viewport.
+ */
+@property --p {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@utility route-progress {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: route-draw linear both;
+      animation-timeline: view();
+      animation-range: cover 30vh cover calc(100% - 70vh);
+    }
+
+    :where(html.route-js) & {
+      --p: 0;
+    }
+  }
+}
+
+@keyframes route-draw {
+  from {
+    --p: 0;
+  }
+  to {
+    --p: 1;
+  }
+}
+
+/* Stops, sets and "Finish" pop in once the road reaches them (route-script.tsx). */
+@utility pop {
+  :where(html.route-js) & {
+    transition:
+      opacity 300ms var(--ease-out-expo),
+      scale 550ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  :where(html.route-js) &:not(.on) {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
